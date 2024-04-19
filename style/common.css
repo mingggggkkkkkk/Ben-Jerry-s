@@ -57,23 +57,16 @@ body {
 
 /* header */
 #header {  
-    position: relative;
+    position: absolute;
+    top: 0; left: 0;
     width: 100%;
-    height: 745px;
+    height: 100px;
     display: flex;
     justify-content: center;
-    background: #0038C8;
     margin: 0 auto;
-
-    z-index: 98;
-}
-#header::before {  
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 100%;
-    background: url(../image/blobs.png) no-repeat center / cover;
-    mix-blend-mode: multiply;
+    
+    z-index: 1000;
+    overflow: hidden;
 }
 h1{
     position: absolute; 
@@ -99,7 +92,6 @@ h1{
     text-transform: uppercase;
 
     margin-top: 20px;
-    overflow: hidden;
 }
 #gnb > li {
     height: 100%;
@@ -122,7 +114,7 @@ h1{
     line-height: 40px;
 }
 .sub li a:hover {  
-    color: #0038C8;
+    color: #FFA800;
     border-bottom: 1px solid #0038C8;
 }
 /* 돋보기,햄버거 */
@@ -148,12 +140,25 @@ h1{
 
 /* slide */
 #slide {
-    position: absolute;
-    top: 195px; left: calc(50% - 650px);
-
+    position: relative;
+    top: 0; left: 0;
+    background: #0038C8;
+    padding-top: 100px;
     z-index: 999;
   }
-#slideWrap { position: relative; }
+#slideWrap { 
+    position: relative;
+    top: 94px; left: 0;
+ }
+ #slide::before {  
+    position: absolute;
+    top: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: url(../image/blobs.png) no-repeat center / cover;
+    mix-blend-mode: multiply;
+}
 #slide ul {     
     width: 1210px;
     height: 668px;
@@ -179,7 +184,7 @@ h1{
 }
 #slideWrap .slider { 
     position: absolute; 
-    right: 0;
+    left: calc(50% + 400px);
     bottom: 186px;
 }
 
@@ -592,7 +597,10 @@ main {
 
      /* 미디어쿼리- 1600이상 데스크탑 네비게이션 */
      @media screen and ( min-width: 1600px ) {
-        #header.on { height: 600px; }
+        #header.on { 
+            height: 300px;
+            overflow: visible;
+        }
         #gnbWrap { 
             display: flex;
             justify-content: center;
@@ -601,7 +609,6 @@ main {
             display: flex;
             text-align: center;
         }
-        /* #gnb > li > a { line-height: 80px; } */
         #gnbWrap .snb { display: block; }
         #gnbWrap .snb li { line-height: 50px; }
 
