@@ -7,25 +7,32 @@ $("#header").on('mouseleave', function(){
 })
 
 //slider들 모양(테두리 생성, 공통)
-//블루
-$(".slider a").on('click', function(){
-    $(this).css({
-        width: '25px',
-        height: '25px',
-        border: 0,
-        background: 'url(./image/cicleB.png) center / cover'
-    });
-    //나머지는 원상태
-    $(".slider a").not(this).css({
-        width: '', 
-        height: '',
-        border: '',
-        background: '' 
-    });
+//화이트 헤더
+$("#slideWrap .slider a").on('click', function(){
+    $("#slideWrap .slider a").removeClass('on');
+    $(this).addClass('on');    
     
+});
+//블루 접시
+$(".rotateImage .slider2 a").on('click', function(){
+    $(".rotateImage .slider2 a").removeClass('on');
+    $(this).addClass('on');    
+});
+//블루 뉴스
+$("#news .slider3 a").on('click', function(){
+    $("#news .slider3 a").removeClass('on');
+    $(this).addClass('on');    
 });
 
 //헤더//////////////
+//햄버거 플러스로 바꾸기
+$('#pic a').last().hover(function(){
+    $(this).css({backgroundImage:'url(./image/plus2.png)'})
+}, function(){
+    $(this).css({backgroundImage:''})
+
+})
+
 //네비 메인오면 따라오기
     $(window).scroll(function() {
         if ($(this).scrollTop() > 807 ) {
@@ -61,7 +68,6 @@ $(document).ready(function(){
     $('#slideWrap .slider a').click(function(){
         let index = $(this).index();
         changeSlide(index);
-        
     });
 
     setInterval(function() {
@@ -83,7 +89,7 @@ $('#bestMenuWrap .btn').mouseleave(function(){
 })
 
 //회전하는 접시
-$('.hideText.slider a').click(function(e) {
+$('.hideText.slider2 a').click(function(e) {
     e.preventDefault();
     let target = $(this).attr('href');
     let rotateIndex = $(target).index();
@@ -163,10 +169,6 @@ $('#popbtn .left').click(function(e) {
 });
 
 
-
-
-
-
 //브랜드 스토리//////////////
 //창업문의 버튼 호버
 $('#brandStory .btn2 a').first().mouseenter(function(){
@@ -192,6 +194,7 @@ $('#brandStory .btn2 a').last().mouseleave(function(){
                         border:'1px solid #0038c8'
                      })
 })
+
 
 //최근소식///////////
 //호버하면 플러스 곱하기
