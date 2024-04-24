@@ -105,6 +105,9 @@ h1{
     color: #fff;
     text-align: center;
  }
+ #gnb > li > a:hover {  
+    color: #FFA800;
+}
  .sub {
     width: 100%;
  }
@@ -115,7 +118,6 @@ h1{
 }
 .sub li a:hover {  
     color: #FFA800;
-    border-bottom: 1px solid #0038C8;
 }
 /* 돋보기,햄버거 */
 #pic { 
@@ -212,7 +214,6 @@ main {
     position: relative;
     width: 50%;
     margin-top: 385px;
-
  }
 #bestMenu .mainWrap { 
     position: absolute; top: 50px; left: 30px; width: 100%;
@@ -255,9 +256,11 @@ main {
     font-family: 'yg-jalnan';
     text-align: center;
     line-height: 47px;
+    transition: 0.2s;
  }
  #choco, #berry { 
-    opacity: 0; 
+    /* opacity: 0;  */
+    display: none;
 }
 
  /* 접시 */
@@ -267,6 +270,7 @@ main {
     width: 960px;
     height: 960px;
     overflow: hidden;
+    transition: transform 0.5s ease-in-out;
 }
 .rotate { 
     width: 1045px;
@@ -277,10 +281,10 @@ main {
     z-index: 9;
     transition: 1s transform;
  }
-.rotate > div { position: absolute;  width: 600px; height: 600px; background: no-repeat center / cover; }
+.rotate > div { position: absolute; width: 600px; height: 600px; background: no-repeat center / cover; }
 .rotate > .remon { background-image: url(../image/vanila.png); top: 50%; left: -10%; }
-.rotate > .berry { background-image: url(../image/very.png); top: 35%; left: 55%; opacity: 0; }
 .rotate > .choco { background-image: url(../image/choco.png); top: -10%; left: 20%;  opacity: 0; }
+.rotate > .berry { background-image: url(../image/very.png); top: 35%; left: 55%; opacity: 0; }
 
 
 /* 슬라이더 */
@@ -298,6 +302,7 @@ main {
     height: 16px;
     z-index: 10;
 }
+.rotateImage .slider a.on { background: #0038C8; }
 .rotateImage .slider a:nth-of-type(1) {
     position: absolute;
     bottom: 120px; left: -15px;
@@ -324,6 +329,9 @@ main {
 #popWrap { 
     display: flex;
     justify-content: center;
+    width: 1400px;
+    position: relative;
+
  }
 #popbtn a { 
     display: block;
@@ -332,20 +340,23 @@ main {
     background: no-repeat center / cover;
     position: absolute;
     z-index: 12;
+    transition: 0.2s;
  }
 #popbtn .left { 
     background-image: url(../image/left.png);
-    top: 130px;
+    top: 140px;
     left: -60px;
  }
 #popbtn .right { 
     background-image: url(../image/right.png);
-    top: 130px;
+    top: 140px;
     right: -60px;
  }
 #viewfive {
+    width: calc(280*8);
     display: flex;
     position: relative;
+    position: absolute; left: 0;
 }
 #popWrap .pop {
     position: relative;
@@ -355,6 +366,7 @@ main {
     background: #fff;
     box-shadow: 0 4px 4px #00000050;
     margin: 0 18px;
+    transition: 0.2s;
  }
 #popWrap .pop dt {
     font-family: 'GmarketSansMedium';
@@ -383,6 +395,7 @@ main {
     text-align: center;
     width: 54px;
     height: 24px;
+    padding-left: 12px;
     background: url(../image/score.png) no-repeat center / cover;
 
     position: absolute;
@@ -449,6 +462,8 @@ main {
     border-radius: 15px;
     border: 1px solid #0038C8;
     line-height: 48px;
+    transition: 0.2s;
+
   }
 #brandStory .btn2 a:nth-of-type(1) { 
     margin-right: 20px;
@@ -490,23 +505,30 @@ main {
 .newsWrap .news { 
     position: relative;
  }
-.newsWrap .news::before { 
+.newsWrap .news > div { position: relative; 
+                    width: 327px; height: 327px; overflow: hidden;  
+            border-radius: 15px;
+}
+.newsWrap .news > div::before { 
     content: ""; 
     display: block; 
     width: 327px;
     height: 327px; 
-    border-radius: 15px;
     background: no-repeat top / cover;
     margin-bottom: 13px;
+    transition: transform 0.3s ease;
  }
- .newsWrap .news:nth-of-type(1)::before {
+ .newsWrap .news:nth-of-type(1) > div::before {
     background-image: url(../image/news1.jpg);
-}.newsWrap .news:nth-of-type(2)::before {
+}.newsWrap .news:nth-of-type(2) > div::before {
     background-image: url(../image/news2.jpg);
-}.newsWrap .news:nth-of-type(3)::before {
+}.newsWrap .news:nth-of-type(3) > div::before {
     background-image: url(../image/icecream30.jpg);
-}.newsWrap .news:nth-of-type(4)::before {
+}.newsWrap .news:nth-of-type(4) > div::before {
     background-image: url(../image/icecream14.jpg);
+}
+.newsWrap .news > div:hover::before {
+    transform: scale(1.1);
 }
 .newsWrap .news span { 
     font-size: 11px;
@@ -559,7 +581,10 @@ main {
 #footerGnb .gnbWrap li a { 
     color: #fff;
  }
-
+#footerGnb .gnbWrap li a:hover { 
+    color: #FFA800;
+    transition: 0.1s;
+  }
 #footerGnb .sns {
     display: flex;
   }
@@ -638,3 +663,4 @@ main {
         }
         #gnbWrap .snb a { color: #fff; }
      }
+/* 버튼이나 이미지들 호버넣기, 네비는 흰색에 파란라인 트랜지션 */
