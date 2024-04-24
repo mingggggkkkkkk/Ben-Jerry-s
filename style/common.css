@@ -109,12 +109,16 @@ h1{
     color: #FFA800;
 }
  .sub {
+    height: 130px;
+    background: #fff;
     width: 100%;
+
  }
 .sub li a { 
-    color: #FFF3E2;
+    color: #0038C8;
     font-size: 14px;
     line-height: 40px;
+
 }
 .sub li a:hover {  
     color: #FFA800;
@@ -175,6 +179,8 @@ h1{
 }
 .slider { 
     display: flex; 
+    align-items: center;
+
 }
 .slider a {
     display: block;
@@ -302,7 +308,6 @@ main {
     height: 16px;
     z-index: 10;
 }
-.rotateImage .slider a.on { background: #0038C8; }
 .rotateImage .slider a:nth-of-type(1) {
     position: absolute;
     bottom: 120px; left: -15px;
@@ -550,6 +555,7 @@ main {
     border: 1px solid #0038C8;
  }
 
+
 .plus { 
     display: block;
     width: 21px;
@@ -634,8 +640,12 @@ main {
             display: flex;
             text-align: center;
         }
-        #gnbWrap .snb { display: block; }
-        #gnbWrap .snb li { line-height: 50px; }
+        #gnbWrap .snb { 
+            display: block;
+         }
+        #gnbWrap .snb li { 
+            line-height: 50px;
+         }
 
      }
 

@@ -7,9 +7,23 @@ $("#header").on('mouseleave', function(){
 })
 
 //slider들 모양(테두리 생성, 공통)
+//블루
 $(".slider a").on('click', function(){
-    $(this).css({backgroundColor: '#0038C8'})
-})
+    $(this).css({
+        width: '25px',
+        height: '25px',
+        border: 0,
+        background: 'url(./image/cicleB.png) center / cover'
+    });
+    //나머지는 원상태
+    $(".slider a").not(this).css({
+        width: '', 
+        height: '',
+        border: '',
+        background: '' 
+    });
+    
+});
 
 //헤더//////////////
 //네비 메인오면 따라오기
@@ -47,6 +61,7 @@ $(document).ready(function(){
     $('#slideWrap .slider a').click(function(){
         let index = $(this).index();
         changeSlide(index);
+        
     });
 
     setInterval(function() {
@@ -55,8 +70,9 @@ $(document).ready(function(){
     }, 5000);
 })
 
+
 //best memu/////////////////////
-//파란버튼
+//파란버튼 호버
 $('#choco, #berry').hide();
 
 $('#bestMenuWrap .btn').mouseenter(function(){
@@ -67,25 +83,25 @@ $('#bestMenuWrap .btn').mouseleave(function(){
 })
 
 //회전하는 접시
-$(document).ready(function() {
-    $('.hideText.slider a').click(function(e) {
-        e.preventDefault();
-        let target = $(this).attr('href');
-        let rotateIndex = $(target).index();
-        
-        $(".rotate div").not(":eq("+ $(this).index() +")").animate({ opacity: 0 })
-        $(".rotate div:eq("+ $(this).index() +")").animate({ opacity: 1 })
+$('.hideText.slider a').click(function(e) {
+    e.preventDefault();
+    let target = $(this).attr('href');
+    let rotateIndex = $(target).index();
+    
+    $(".rotate div").not(":eq("+ $(this).index() +")").animate({ opacity: 0 })
+    $(".rotate div:eq("+ $(this).index() +")").animate({ opacity: 1 })
 
-        // $(target).css({opacity: '1'});
-        $('.rotate').css('transform', 'rotate(' + (-rotateIndex * 120) + 'deg)');
-    });
+    $('.rotate').css('transform', 'rotate(' + (-rotateIndex * 120) + 'deg)');
+
+//버튼누르면 설명나타나기
+//근데 페이드하면 블락이 자동으로 되나? none이 왜 풀리지
+    $('.mainWrap').fadeOut(300); 
+    $(target).fadeIn(300);
 });
 
 
-
-
 //인기있는 아이스크림////////////////////
-//left, right
+//left, right 호버
 $('#popbtn .left').mouseenter(function(){
     $(this).css({backgroundImage:'url(./image/left2.png)'})
 })
@@ -152,7 +168,7 @@ $('#popbtn .left').click(function(e) {
 
 
 //브랜드 스토리//////////////
-//창업문의 버튼
+//창업문의 버튼 호버
 $('#brandStory .btn2 a').first().mouseenter(function(){
     $(this).css({backgroundColor:'#0038C8', 
                         color:'#FFF',
@@ -178,7 +194,17 @@ $('#brandStory .btn2 a').last().mouseleave(function(){
 })
 
 //최근소식///////////
-
+//호버하면 플러스 곱하기
+$('.plus').hover(function(){
+    $(this).css({
+        transition: 'transform 0.2s',
+        transform: 'rotate(45deg)'
+    });
+}, function(){
+    $(this).css({
+        transform: 'rotate(0deg)'
+    });
+})
 
 
 
