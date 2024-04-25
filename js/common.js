@@ -1,4 +1,25 @@
-//pc 메뉴 활성화
+//slider들 모양(테두리 생성, 공통)
+//화이트 헤더
+$("#slideWrap .slider a").on('click', function(){
+    $("#slideWrap .slider a").removeClass('on');
+    $(this).addClass('on');    
+});
+
+//블루 접시
+$(".rotateImage .slider2 a").on('click', function(){
+    $(".rotateImage .slider2 a").removeClass('on');
+    $(this).addClass('on');    
+});
+//블루 뉴스
+$("#news .slider3 a").on('click', function(e){
+    e.preventDefault();
+    $("#news .slider3 a").removeClass('on');
+    $(this).addClass('on');    
+});
+
+
+//header헤더//////////////
+//네비 활성화
 $("#gnbWrap").on('mouseenter', function(){
     $("#header").addClass('on')
 })
@@ -6,31 +27,11 @@ $("#header").on('mouseleave', function(){
     $(this).removeClass('on');
 })
 
-//slider들 모양(테두리 생성, 공통)
-//화이트 헤더
-$("#slideWrap .slider a").on('click', function(){
-    $("#slideWrap .slider a").removeClass('on');
-    $(this).addClass('on');    
-    
-});
-//블루 접시
-$(".rotateImage .slider2 a").on('click', function(){
-    $(".rotateImage .slider2 a").removeClass('on');
-    $(this).addClass('on');    
-});
-//블루 뉴스
-$("#news .slider3 a").on('click', function(){
-    $("#news .slider3 a").removeClass('on');
-    $(this).addClass('on');    
-});
-
-//헤더//////////////
 //햄버거 플러스로 바꾸기
 $('#pic a').last().hover(function(){
     $(this).css({backgroundImage:'url(./image/plus2.png)'})
 }, function(){
     $(this).css({backgroundImage:''})
-
 })
 
 //네비 메인오면 따라오기
@@ -48,34 +49,45 @@ $('#pic a').last().hover(function(){
         }
     });
 
-// 헤더 자동 슬라이드와 버튼 슬라이드
-$(document).ready(function(){
-    let currentIndex = 0;
-    let slides = $('#slide ul li');
-    let totalSlides = slides.length;
+//광고 #slide시작
+// 광고 자동 슬라이드와 버튼 슬라이드
+let currentIndex = 0; // 현재 활성 슬라이드의 인덱스
+let slides = $('#slide ul li'); // 모든 슬라이드 요소들
+let totalEventSlides = slides.length; // 전체 슬라이드의 수
+let nextIndex;
+// 슬라이드 변경 함수
+function changeSlide(index) {
 
-    function changeSlide(index) {
-        slides.removeClass('active').hide();
-        slides.eq(index).fadeIn().addClass('active');
-        currentIndex = index;
-    }
+    // 현재 활성 슬라이드 제외하고 투명하게 만들기
+    slides.eq(currentIndex).animate({ opacity: 0 }, 500);
+    
+    // 선택한 슬라이드를 서서히 나타나도록 페이드 인
+    slides.eq(index).animate({ opacity: 1 }, 500);
+    currentIndex = index;
 
-    function moveToSlide(index) {
-        slides.hide().eq(index).fadeIn().addClass('active');
-        currentIndex = index;
-    }
+    // 화이트 테두리 버튼
+    $("#slide .slider a").removeClass('on')
+    $("#slide .slider a:eq("+ index  +")").addClass('on')
+}
 
-    $('#slideWrap .slider a').click(function(){
-        let index = $(this).index();
-        changeSlide(index);
-    });
+// 일정 시간마다 자동으로 슬라이드 변경
+let timer = setInterval(function() {
+    nextIndex = (currentIndex + 1) % totalSlides;
+    if ( nextIndex == 4 ) nextIndex = 0
+    changeSlide(nextIndex);
+}, 3000);
 
-    setInterval(function() {
-        let nextIndex = (currentIndex + 1) % totalSlides;
+// 슬라이드 제어 버튼 클릭 이벤트
+$('#slideWrap .slider a').click(function(){
+    clearInterval(timer)
+    changeSlide($(this).index());
+    
+    timer = setInterval(function() {
+        nextIndex = (currentIndex + 1) % totalSlides;
+        if ( nextIndex == 4 ) nextIndex = 0
         changeSlide(nextIndex);
-    }, 5000);
-})
-
+    }, 4000);
+});
 
 //best memu/////////////////////
 //파란버튼 호버
@@ -100,69 +112,67 @@ $('.hideText.slider2 a').click(function(e) {
     $('.rotate').css('transform', 'rotate(' + (-rotateIndex * 120) + 'deg)');
 
 //버튼누르면 설명나타나기
-//근데 페이드하면 블락이 자동으로 되나? none이 왜 풀리지
     $('.mainWrap').fadeOut(300); 
     $(target).fadeIn(300);
 });
 
 
 //인기있는 아이스크림////////////////////
-//left, right 호버
-$('#popbtn .left').mouseenter(function(){
+//좌우버튼
+$("#popbtn .left").hover(function(){
     $(this).css({backgroundImage:'url(./image/left2.png)'})
+}, function(){
+    $(this).css({backgroundImage:''})
 })
-$('#popbtn .left').mouseleave(function(){
-    $(this).css({backgroundImage:'url(./image/left.png)'})
-})
-$('#popbtn .right').mouseenter(function(){
+$("#popbtn .right").hover(function(){
     $(this).css({backgroundImage:'url(./image/right2.png)'})
+}, function(){
+    $(this).css({backgroundImage:''})
 })
-$('#popbtn .right').mouseleave(function(){
-    $(this).css({backgroundImage:'url(./image/right.png)'})
-})
-
 //pop호버
-$("#popWrap .pop").on('mouseenter', function(){
+$("#popWrap .pop").hover(function(){
     $(this).css({backgroundColor:'#FF7070'})
     $(this).find('.price').css({color: '#fff'})
     $(this).find('.arrow a').css({backgroundImage:'url(./image/button2.png)'})
-})
-$("#popWrap .pop").on('mouseleave', function(){
-    $(this).css({backgroundColor:'#fff'})
-    $(this).find('.price').css({color: '#FFA800'})
-    $(this).find('.arrow a').css({backgroundImage:'url(./image/button.png)'})
+
+}, function(){
+    $(this).css({backgroundColor:''})
+    $(this).find('.price').css({color: ''})
+    $(this).find('.arrow a').css({backgroundImage:''})
 })
 
-//pop 슬라이드
-let currentPosition = 0; // 현재위치
-let slideWidth = $('.pop').outerWidth(true); //margin 포함넓이
+// pop 슬라이드
+let currentPosition = 0; // 현재 위치
+let slideWidth = $('.pop').outerWidth(true); // margin 포함넓이
 let totalSlides = $('.pop').length;
 
-// 슬라이드 함수
+// 초기 설정: 맨 뒤의 .pop 아이템을 맨 앞으로 이동
+// $('#viewfive').prepend($('.pop:last-child')); //중복
+$('#viewfive').css('margin-left', -slideWidth);
+
+// 슬라이드 함수 정의
 function slide(direction) {
     if (direction === "next") {
         currentPosition -= slideWidth;
-        if (currentPosition < -(totalSlides - 1) * slideWidth) {
-            currentPosition = 0;
-            $('#viewfive').css('margin-left', currentPosition);
-        }
+        $('#viewfive').animate({marginLeft: -slideWidth*2}, 300, function() {
+                currentPosition = -slideWidth;
+                $('#viewfive').append($('.pop:first-child'));
+                $('#viewfive').css('margin-left', currentPosition);
+        });
     } else {
-        currentPosition += slideWidth;
-        if (currentPosition > 0) {
-            currentPosition = -(totalSlides - 1) * slideWidth;
-            $('#viewfive').css('margin-left', currentPosition);
-        }
+        $('#viewfive').animate({marginLeft: 0}, 300, function() {
+            $('#viewfive').prepend($('.pop:last-child'));
+            $('#viewfive').css('margin-left', -slideWidth);
+            currentPosition = -slideWidth;
+        });
     }
-    $('#viewfive').animate({marginLeft: currentPosition}, 300);
 }
-
-// 다음 버튼클릭
+// 다음 버튼 클릭
 $('#popbtn .right').click(function(e) {
     e.preventDefault();
     slide("next");
 });
-
-// 이전 버튼클릭
+// 이전 버튼 클릭 
 $('#popbtn .left').click(function(e) {
     e.preventDefault();
     slide("prev");
@@ -177,23 +187,41 @@ $('#brandStory .btn2 a').first().mouseenter(function(){
                         })
 })
 $('#brandStory .btn2 a').first().mouseleave(function(){
-    $(this).css({backgroundColor:'#fff', 
-                        color:'#0038c8',
-                        border:'1px solid #0038c8'
+    $(this).css({backgroundColor:'', 
+                        color:'',
+                        border:''
                      })
 })
 //브랜드소개 버튼
 $('#brandStory .btn2 a').last().mouseenter(function(){
-    $(this).css({backgroundColor:'#FFA800', 
-                        color:'#FFF',
-                        border:'1px solid #FFA800'})
+    $(this).css({backgroundColor:'#fff', 
+                        color:'#0038c8',
+                        border:'1px solid #0038c8'})
 })
 $('#brandStory .btn2 a').last().mouseleave(function(){
-    $(this).css({backgroundColor:'#0038C8', 
-                        color:'#fff',
-                        border:'1px solid #0038c8'
+    $(this).css({backgroundColor:'', 
+                        color:'',
+                        border:''
                      })
 })
+//브랜드스토리배경 커지기 #popular부터 스크롤했을때
+$(window).scroll(function() {
+    let scrollPos = $(window).scrollTop();
+    let popularPos = $('#popular').offset().top;
+    let brandStory = $('#brandStory');
+
+    if (scrollPos >= popularPos) {
+        let scale = 1 + (scrollPos - popularPos) / 1000; // 배경 이미지의 크기를 조절할 비율
+        brandStory.css({
+            'background-size': (scale * 100) + '%', // 배경 이미지 크기 조절
+            'transition': 'background-size 0.3s ease' // 애니메이션 효과 추가
+        });
+    } else {
+        brandStory.css({
+            'background-size': '100%' //복원
+        });
+    }
+});
 
 
 //최근소식///////////
@@ -208,8 +236,3 @@ $('.plus').hover(function(){
         transform: 'rotate(0deg)'
     });
 })
-
-
-
-
-

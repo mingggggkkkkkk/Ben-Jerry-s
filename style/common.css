@@ -71,7 +71,7 @@ body {
 }
 h1{
     position: absolute; 
-    left: 244px; top: 34px;
+    left: 244px; top: 30px;
 }
 #logo { 
     display: block;
@@ -91,8 +91,6 @@ h1{
     text-align: center;
     font-size: 15px;
     text-transform: uppercase;
-
-    margin-top: 20px;
 }
 #gnb > li {
     height: 100%;
@@ -106,19 +104,22 @@ h1{
     color: #fff;
     text-align: center;
  }
- #gnb > li > a:hover {  
+ #gnb > li:hover > a {  
     color: #FFA800;
 }
- .sub {
-    height: 130px;
- }
-.sub li a { 
-    color: #0038C8;
-    font-size: 14px;
-    line-height: 40px;
-
+#gnb > li:hover > .snb {
+    height: 240px;
+    background: #0038C8;
 }
-.sub li a:hover {  
+.snb li a { 
+    color: #0038C8;
+    line-height: 40px;
+    font: 16px 'GmarketSansMedium';
+}
+
+#gnb > li:hover > .snb li a { color: #fff; }
+
+#gnb > li:hover > .snb li a:hover {  
     color: #FFA800;
     text-decoration: underline #FFA800;
 }
@@ -127,7 +128,7 @@ h1{
     display: flex;
     position: absolute;
     right: 280px;
-    top: 43px;
+    top: 23px;
  }
 #pic li {  margin: 20px; }
 #pic li a {
@@ -141,7 +142,7 @@ h1{
 }
 #pic li:nth-of-type(2) a {
     background-image: url(../image/threeBar.png);
-    transition: transform 0.2s ease-in, background-image 0.5s ease;
+    transition: background-image 0.2s ease-out;
 }
 
 /* slide */
@@ -169,19 +170,22 @@ h1{
     width: 1210px;
     height: 668px;
     margin: 0 auto;
-
+    position: relative;
     overflow: hidden;
  }
-#slide ul li a { display: block; }
-#slide ul li a img {
-    width: 1210px;
-    height: 668px;
+ #slide ul li {
+     position: absolute;
+     top: 0; left: 0; 
+     opacity: 0;
 }
+#slide ul li:nth-child(1) { opacity: 1; }
+#slide ul li img { width: 1210px; }
+
 .slider,.slider2,.slider3 { 
     display: flex; 
     align-items: center;
-
 }
+
 .slider a,.slider2 a,.slider3 a {
     display: block;
     width: 15px;
@@ -349,7 +353,7 @@ main {
     height: 49px;
     background: no-repeat center / cover;
     position: absolute;
-    z-index: 12;
+    z-index: 10000;
     transition: 0.2s;
  }
 #popbtn .left { 
@@ -365,9 +369,9 @@ main {
 #viewfive {
     width: calc(280*8);
     display: flex;
-    position: relative;
     position: absolute; left: 0;
 }
+  
 #popWrap .pop {
     position: relative;
     width: 245px;
@@ -378,6 +382,7 @@ main {
     margin: 0 18px;
     transition: 0.2s;
  }
+.pop:first-child, .pop:last-child, .pop:nth-last-child(2) { opacity: 0.3; }
 #popWrap .pop dt {
     font-family: 'GmarketSansMedium';
     font-size: 13px;
@@ -635,7 +640,7 @@ main {
      /* 미디어쿼리- 1600이상 데스크탑 네비게이션 */
      @media screen and ( min-width: 1600px ) {
         #header.on { 
-            height: 270px;
+            height: 340px;
             border-bottom: 1px solid #0038C8;
             /* overflow: visible; */
         }
@@ -646,7 +651,6 @@ main {
             height: 100%;
             background: #fff;
         }
-
         #gnbWrap { 
             display: flex;
             justify-content: center;
@@ -655,13 +659,11 @@ main {
             display: flex;
             text-align: center;
         }
-        #gnbWrap .snb { 
-            display: block;
-         }
         #gnbWrap .snb li { 
-            line-height: 50px;
+            line-height: 50px;            
          }
-
+         .snb { padding-top: 20px; }
+         
      }
 
      /* 1599이하 */
@@ -688,4 +690,11 @@ main {
         }
         #gnbWrap .snb a { color: #fff; }
      }
-/* 버튼이나 이미지들 호버넣기, 네비는 흰색에 파란라인 트랜지션 */
+
+     /* 모바일 */
+     @media screen and ( max-width: 430px ) {
+        
+
+
+
+     }
