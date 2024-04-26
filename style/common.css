@@ -219,6 +219,7 @@ main {
     position: absolute; 
     top: 290px; left: 245px;
     font-size: 25px;
+    text-transform: capitalize;
  }
 #bestMenuWrap {
     position: relative;
@@ -226,7 +227,9 @@ main {
     margin-top: 385px;
  }
 #bestMenu .mainWrap { 
-    position: absolute; top: 50px; left: 30px; width: 100%;
+    position: absolute; 
+    top: 50px; left: 30px; 
+    width: 100%;
     display: flex; 
     flex-direction: column;
     align-items: flex-start;
@@ -345,7 +348,6 @@ main {
     justify-content: center;
     width: 1400px;
     position: relative;
-
  }
 #popbtn a { 
     display: block;
@@ -369,9 +371,9 @@ main {
 #viewfive {
     width: calc(280*8);
     display: flex;
-    position: absolute; left: 0;
+    position: absolute; 
+    left: 0;
 }
-  
 #popWrap .pop {
     position: relative;
     width: 245px;
@@ -520,9 +522,11 @@ main {
 .newsWrap .news { 
     position: relative;
  }
-.newsWrap .news > div { position: relative; 
-                    width: 327px; height: 327px; overflow: hidden;  
-            border-radius: 15px;
+.newsWrap .news > div { 
+    position: relative; 
+    width: 327px; height: 327px; 
+    overflow: hidden;  
+    border-radius: 15px;
 }
 .newsWrap .news > div::before { 
     content: ""; 
@@ -642,7 +646,6 @@ main {
         #header.on { 
             height: 340px;
             border-bottom: 1px solid #0038C8;
-            /* overflow: visible; */
         }
         #header.on::before {
             content: "";
@@ -691,10 +694,203 @@ main {
         #gnbWrap .snb a { color: #fff; }
      }
 
-     /* 모바일 */
+     /* 모바일 430 */
      @media screen and ( max-width: 430px ) {
+        #header {
+            height: 50px;
+            position: relative;
+            top: 0; left: 0;
+            background: #0038C8;
+        }
+        h1 {
+            position: absolute;
+            left: 20px; top: 20px;
+        }
+        #logo{
+            height: 30px;
+            width: 103px;
+        }
+        #gnb {
+            display: none;
+        }
+    /* 햄버거 */
+        #pic {
+            top: 30px;
+            right: 30px;
+        }
+        #pic li {  margin: 0; }
+        #pic li:nth-of-type(1) a {
+            display: none;
+         }
+    /* 광고슬라이드 */
+        #slide {
+            padding-top: 50px;
+            height: 825px;
+        }
+        #slideWrap { 
+            top: 0; 
+         }
+        #slide ul {     
+        width: 100%;
+        }
+        #slide ul li img{
+            width: 100%;
+        }
+        #slideWrap .slider { 
+            position: relative; 
+            top: 60px; left: 50px;
+            margin: 0 auto;
+        }
+        .slider a,.slider2 a,.slider3 a {
+            display: block;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            margin-left: 20px;
+        }
+        /* bestMenu */
+        #bestMenu { 
+            height: 1300px;
+         }
+         #bestMenu h2 {
+            top: 110px; left: 35px;
+         }
+         #bestMenuWrap{ 
+            width: 100%;
+            margin-top: 0;
+        }
+        #bestMenu .mainWrap {
+            top: 210px; left: 50px;
+            margin-left: 0;
+        }
+        .mainWrap .btn {
+            margin: 60px auto 0 auto;
+        }
+
+        /* 접시 */
+        .rotateImage {
+            display: none;
+        }
+         /* popluar */
+         #popular { 
+            position: absolute;
+            top: 780px; 
+            left: 25px;
+         }
+         #popular h2 { 
+            margin-bottom: 63px;
+         }
+         #popWrap { 
+            width: 100%;
+         }
+         #popbtn a {
+            display: none;
+         }
+         #viewfive {
+            left: 30px;
+         }
+         .pop:first-child,.pop:nth-child(3) { 
+            opacity: 0.3; }
+
+         /* brandStory */
+         /* 스크롤금지 어캐한담 */
+         #brandStory {
+            height: 660px;
+         }
+         #brandStory h2 { 
+            font-size: 25px;
+         }
+        #brandStory h3 { 
+            font-size: 25px;
+         }
+        #brandStory p { 
+            font-size: 15px;
+         }
+         #brandStory .btn2 { 
+            margin-top: 83px;
+            display: flex;
+            flex-flow: column;
+        }
+        #brandStory .btn2 a {
+            margin-bottom: 10px;
+        }
         
+        /* news */
+        #newsBg {
+            width: 100%;
+            height: 1400px;
+            padding-top: 120px;
+        }
+        #news { 
+            width: 100%;
+            padding-left: 25px;
+            /* ??????중앙배열왜안돼 */
+        }
+        #news h3 {
+            font-size: 30px;
+            margin: 12px 0 50px 0;
+        }
+        #news .newsWrap {
+            height: 1000px;
+            display: flex;
+            flex-flow: column;
+            overflow: hidden;
+        }
+        .newsWrap .news {
+            padding-bottom: 20px;
+         }
+         .newsWrap .news > div { 
+            width: 380px; 
+            height: 170px; 
+            overflow: hidden;  
+            border-radius: 15px;
+        }
+        .newsWrap .news > div::before { 
+            width: 380px;
+         }
+         #news .slider3 {
+            display: none;
+         }
+         .plus { 
+            display: block;
+            width: 162px;
+            height: 47px;
+            background: #0038C8;
+            border-radius: 15px;
+            position: relative;
+            top: 50px; 
+            left: calc(50% - 81px);
 
-
-
+            text-indent: 0;
+            color: #fff;
+            text-align: center;
+            line-height: 47px;
+         }
+         /* 푸터 */
+         #footer {
+            height: 360px;
+            width: 100%;
+            padding:  180px 0 0 0;
+            text-align: center;
+         }
+         #footerGnb {
+            display: none;
+         }
+         #footer p { 
+            font-size: 9px;
+            line-height: 18px;
+         }
+        #footer address { 
+            font-size: 9px;
+            line-height: 18px;
+            padding-bottom: 14px;
+         }
+        #footer small { 
+            font-size: 8px;
+            line-height: 10px;
+        }
+        body{
+            overflow-x: hidden;
+        }
      }
