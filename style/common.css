@@ -65,7 +65,7 @@ body {
     justify-content: center;
     margin: 0 auto;
     
-    z-index: 1000;
+    z-index: 100;
     overflow: hidden;
     transition: 0.3s ease;
 }
@@ -151,7 +151,7 @@ h1{
     top: 0; left: 0;
     background: #0038C8;
     padding-top: 100px;
-    z-index: 999;
+    z-index: 25;
   }
 #slideWrap { 
     position: relative;
@@ -279,10 +279,9 @@ main {
  /* 접시 */
 .rotateImage {
     position: relative;
-    z-index: 9;
+    z-index: 5;
     width: 960px;
     height: 960px;
-    overflow: hidden;
     transition: transform 0.5s ease-in-out;
 }
 .rotate { 
@@ -291,7 +290,7 @@ main {
     border-radius: 50%;
     position: absolute;
     top: -170px; left: 100px;
-    z-index: 9;
+    z-index: 10;
     transition: 1s transform;
  }
 .rotate > div { position: absolute; width: 600px; height: 600px; background: no-repeat center / cover; }
@@ -314,7 +313,7 @@ main {
     border-radius: 50%;
     width: 16px; 
     height: 16px;
-    z-index: 10;
+    z-index: 11;
 }
 #slideWrap .slider a.on { width: 25px; height: 25px; border: 0; background: url(../image/cicleW.png) no-repeat center; }
 .rotateImage .slider2 a.on { width: 25px; height: 25px; border: 0; background: url(../image/cicleB.png) no-repeat center; }
@@ -355,7 +354,7 @@ main {
     height: 49px;
     background: no-repeat center / cover;
     position: absolute;
-    z-index: 10000;
+    z-index: 20;
     transition: 0.2s;
  }
 #popbtn .left { 
@@ -765,7 +764,7 @@ main {
             margin-left: 0;
         }
         .mainWrap .btn {
-            margin: 60px auto 0 auto;
+            margin: 60px 0 0 60px;
         }
 
         /* 접시 */
@@ -794,7 +793,6 @@ main {
             opacity: 0.3; }
 
          /* brandStory */
-         /* 스크롤금지 어캐한담 */
          #brandStory {
             height: 660px;
          }
@@ -894,3 +892,5 @@ main {
             overflow-x: hidden;
         }
      }
+     /* 반으형일땐 스크립트없애는건 어디에?
+     광고사이즈 수정이랑, 마지막 버튼,스토리배경 */
