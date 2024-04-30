@@ -21,19 +21,51 @@ $("#news .slider3 a").on('click', function(e){
 
 
 //header헤더//////////////
-//네비 활성화
-$("#gnbWrap").on('mouseenter', function(){
+//네비 활성화 //모바일버전도++
+function resizing() {
+}
+resizing();
+$(".mobileView.close").hide();
+$(".mobileView.open").show();
+
+$(window).on('resize', function(){
+    //1600보다 클 경우 (pc)
+    if ( $(window).innerWidth() >= 1600 ) {
+        $('#gnbWrap .snb').show();
+        $('#gnbWrap').removeClass("mobile")
+        $(".close").hide();
+
+    }
+    //1600보다 작을 경우 (mobile)
+    else {
+        $('#gnbWrap .snb').hide();
+        $(".open").show();
+        $(".close").hide();
+    }
+})
+//pc menu
+$('#gnbWrap').on('mouseenter', function(){
     $("#header").addClass('on')
 })
-$("#header").on('mouseleave', function(){
+$('#header').on('mouseleave', function(){
     $(this).removeClass('on');
 })
+//mobile menu
+$(".open").on('click', function(){
+    $("#gnbWrap").addClass('mobile');
+    $(this).hide();
+    $('.close').show();
+})
+$(".close").on('click', function(){
+    $("#gnbWrap").removeClass('mobile');
+    $(this).hide();
+    $('.open').show();
+    $('#gnbWrap .snb').hide();
+})
 
-//햄버거 플러스로 바꾸기
-$('#pic a').last().hover(function(){
-    $(this).css({backgroundImage:'url(./image/plus2.png)'})
-}, function(){
-    $(this).css({backgroundImage:''})
+$(document).on('click', '#gnbWrap.mobile > ul > li', function(){
+    $(this).children(".snb").slideToggle()
+            .parents().siblings().children('.snb').slideUp();
 })
 
 //네비 메인오면 따라오기
@@ -103,7 +135,7 @@ $('#bestMenuWrap .btn').mouseleave(function(){
 })
 
 //회전하는 접시
-$('.hideText.slider2 a').click(function(e) {
+$('.slider2 a').click(function(e) {
     e.preventDefault();
     let target = $(this).attr('href');
     let rotateIndex = $(target).index();
