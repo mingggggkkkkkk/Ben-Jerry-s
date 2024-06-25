@@ -596,7 +596,7 @@ main {
 #footer { 
     background: url(../image/footerBg.png) no-repeat center / cover;
     height: 390px;
-    padding: 150px 0 0 245px;
+    padding: 150px;
  }
 #footerGnb { 
     display: flex;
@@ -920,7 +920,7 @@ main {
          #footer {
             height: 360px;
             width: 100%;
-            padding:  180px 0 0 0;
+            padding:  180px;
             text-align: center;
          }
          #footer p { 
